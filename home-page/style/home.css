@@ -5,15 +5,13 @@ body {
 }
 
 nav {
-    background-color: black;
+    background-color: #CCF2AF;
     height: 60px;
-    color: white;
 }
 
 #logo-image {
     width: 118px;
-    height: 30px;
-    margin-top: 15px;
+    height: 60px;
     margin-left: 20px;
 }
 
@@ -21,24 +19,33 @@ nav {
     width: 40px;
     height: 30px;
     position: absolute;
-    right: 40px;
     bottom: 3px;
+    margin-left: 10px;
 }
+
 
 #signin-button {
     color: white;
     text-decoration: none;
     position: absolute;
-    right: 100px;
-    top: 20px;
+    right: 130px;
+    top: 15px;
+    font-size: 20px;
+    font-size: 700;
+    padding: 5px 7px 5px 7px;
+    
 }
 
+#signin-button:hover {
+    border: 1px white solid;
+}
 #cart-img {
     width: 40px;
     height: 30px;
     margin-top: 10px;
     position: absolute;
-    right: 45px;
+    top: 7px;
+    right: 70px;
 }
 
 #search-bar {
@@ -46,43 +53,49 @@ nav {
     width: 600px;
     position: absolute;
     top: 12px;
-    left: 400px;
+    left: 350px;
 }
 
 #search {
     width: 500px;
     height: 30px;
+    border-color: white;
 }
 
 table {
-    width: 80%;
+    width: 75%;
     display: table;
     float: right;
+    margin-top: 50px;
+    border-spacing: 30px 30px;
 }
+
 
 td {
     width: 33%;
+    border: 1px solid gray;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.sidebar {
+td img:hover {
+    border: 1px solid black;
+}
+
+td h3 {
+    margin-bottom: 0;
+}
+#sidebar {
     margin: 0;
-    margin-right: 10px;
     padding: 0;
-    width: 15%;
+    width: 18%;
     background-color: #f1f1f1;
-    position: fixed;
-    height: 100vh;
+    position: absolute;
+    padding-bottom: 20px;
 }
   
-.sidebar a {
-    display: block;
+.cat {
     color: black;
-    padding: 16px;
-    text-decoration: none;
+    padding: 10px;
 }
 
-div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-}
