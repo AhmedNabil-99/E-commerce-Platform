@@ -1,0 +1,88 @@
+body {
+    margin: 0px;
+    border: 0px;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: black;
+    height: 60px;
+    color: white;
+}
+
+#logo-image {
+    width: 118px;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#search-button {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    right: 40px;
+    bottom: 3px;
+}
+
+#signin-button {
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+}
+
+#cart-img {
+    width: 40px;
+    height: 30px;
+    margin-top: 10px;
+    position: absolute;
+    right: 45px;
+}
+
+#search-bar {
+    display: inline-block;
+    width: 600px;
+    position: absolute;
+    top: 12px;
+    left: 400px;
+}
+
+#search {
+    width: 500px;
+    height: 30px;
+}
+
+table {
+    width: 80%;
+    display: table;
+    float: right;
+}
+
+td {
+    width: 33%;
+}
+
+.sidebar {
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100vh;
+}
+  
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
