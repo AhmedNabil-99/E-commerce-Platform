@@ -1,61 +1,140 @@
-const tableBody = document.getElementsByTagName("tbody")[0]
-const sideBar = document.getElementById("sidebar")
+const tableBody = document.getElementsByTagName('tbody')[0];
+const sideBar = document.getElementById('sidebar');
 
-const fetchProducts = async function() {
-    const response = await fetch('https://dummyjson.com/products')
-    let productsData = await response.json()
-    productsData = productsData.products
-    let rowsHtml = ``
-    for (let index = 0; index < productsData.length; index+= 2) {
-        let current = productsData[index]
-        let next = productsData[index + 1]
-        let rowHtml = `
+const fetchProducts = async function () {
+  const response = await fetch('https://dummyjson.com/products');
+  let productsData = await response.json();
+  productsData = productsData.products;
+  let rowsHtml = '';
+  for (let index = 0; index < productsData.length; index += 2) {
+    const current = productsData[index];
+    const next = productsData[index + 1];
+    const rowHtml = `
                 <tr>
                     <td>
-                        <h3>${ current.title}</h3>                       
-                        <img src="${ current.images[0]}" alt="" width="300px" height="300px">
+                        <h3>${current.title}</h3>                       
+                        <img src="${current.images[0]}" alt="" width="300px" height="300px">
                         <div class="product-content">
-                            <p>$${ current.price} (${ current.discountPercentage}% discount)</p>
-                            <p>Rating: ${ current.rating}</p>
+                            <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                            <p>Rating: ${current.rating}</p>
                         </div>   
                     </td>
                     <td>
-                        <h3>${ next.title}</h3>                       
-                        <img src="${ next.images[0]}" alt="" width="300px" height="300px">
+                        <h3>${next.title}</h3>                       
+                        <img src="${next.images[0]}" alt="" width="300px" height="300px">
                         <div class="product-content">
-                            <p>$${ next.price} (${ next.discountPercentage}% discount)</p>
-                            <p>Rating: ${ next.rating}</p>
+                            <p>$${next.price} (${next.discountPercentage}% discount)</p>
+                            <p>Rating: ${next.rating}</p>
                         </div>         
                     </td>
                 </tr>
-        `
-        rowsHtml += rowHtml
-    }
-    tableBody.innerHTML = rowsHtml
-}
+        `;
+    rowsHtml += rowHtml;
+  }
+  tableBody.innerHTML = rowsHtml;
+};
 
-const fetchCat = async function() {
-    const reponse = await fetch('https://dummyjson.com/products/category-list')
-    let catData = await reponse.json()
-    for (let index = 0; index < catData.length; index++) {
-        if (index < catData.length - 1) {
-            sideBar.innerHTML += `
+const fetchCat = async function () {
+  const reponse = await fetch('https://dummyjson.com/products/category-list');
+  const catData = await reponse.json();
+  for (let index = 0; index < catData.length; index++) {
+    if (index < catData.length - 1) {
+      sideBar.innerHTML += `
             <div class="cat">
                 <label for="${catData[index]}">${catData[index]}</label>
                 <input type="checkbox" name="${catData[index]}" id="${catData[index]}">
             </div>
-        `
-        }
-        else {
-            sideBar.innerHTML += `
+        `;
+    } else {
+      sideBar.innerHTML += `
             <span class="cat">
                 <label for="${catData[index]}">${catData[index]}</label>
                 <input type="checkbox" name="${catData[index]}" id="${catData[index]}">
             </span>
-        `
-        }
+        `;
     }
-}
+  }
+};
 
-fetchProducts()
-fetchCat()
+const catFilter = async function () {
+  await fetchCat();
+  const catInputs = document.querySelectorAll('input[type=checkbox]');
+  let productsCats = [];
+
+  const renderProducts = () => {
+    let rowsHtml = '';
+    for (let index = 0; index < productsCats.length; index += 2) {
+      const current = productsCats[index];
+      const next = productsCats[index + 1];
+      if (next !== undefined) {
+        const rowHtml = `
+                      <tr>
+                          <td>
+                              <h3>${current.title}</h3>                       
+                              <img src="${current.images[0]}" alt="" width="300px" height="300px">
+                              <div class="product-content">
+                                  <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                                  <p>Rating: ${current.rating}</p>
+                              </div>   
+                          </td>
+                          <td>
+                              <h3>${next.title}</h3>                       
+                              <img src="${next.images[0]}" alt="" width="300px" height="300px">
+                              <div class="product-content">
+                                  <p>$${next.price} (${next.discountPercentage}% discount)</p>
+                                  <p>Rating: ${next.rating}</p>
+                              </div>         
+                          </td>
+                      </tr>
+              `;
+        rowsHtml += rowHtml;
+      } else {
+        const rowHtml = `
+                      <tr>
+                          <td>
+                              <h3>${current.title}</h3>                       
+                              <img src="${current.images[0]}" alt="" width="300px" height="300px">
+                              <div class="product-content">
+                                  <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                                  <p>Rating: ${current.rating}</p>
+                              </div>   
+                          </td>
+                        </tr>`;
+        rowsHtml += rowHtml;
+      }
+    }
+    tableBody.innerHTML = rowsHtml;
+  };
+
+  catInputs.forEach(input => {
+    input.addEventListener('change', async function (e) {
+      const catName = input.name;
+      const response = await fetch(`https://dummyjson.com/products/category/${catName}`);
+      const catData = await response.json();
+      const products = catData.products;
+
+      if (e.target.checked === true) {
+        for (const product of products) {
+          productsCats.push(product);
+        }
+      } else {
+        productsCats = productsCats.filter(product => product.category !== catName);
+      }
+      if (productsCats.length === 0) {
+        await fetchProducts();
+      }    
+      renderProducts();
+      console.log(productsCats);
+    });
+  });
+};
+
+const searchFun = function () {
+  const searchInput = document.querySelector('input[type=text]');
+  console.log(searchInput.value);
+};
+
+fetchProducts();
+fetchCat();
+catFilter();
+searchFun();
