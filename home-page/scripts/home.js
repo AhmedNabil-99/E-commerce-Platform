@@ -121,10 +121,9 @@ const catFilter = async function () {
         productsCats = productsCats.filter(product => product.category !== catName);
       }
       if (productsCats.length === 0) {
-        await fetchProducts();
+        fetchProducts();
       }    
       renderProducts();
-      console.log(productsCats);
     });
   });
 };
