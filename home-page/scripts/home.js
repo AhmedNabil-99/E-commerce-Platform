@@ -1,37 +1,58 @@
 const tableBody = document.getElementsByTagName('tbody')[0];
 const sideBar = document.getElementById('sidebar');
+const logoImage = document.getElementById('logo-image');
+const signin = document.getElementById('signin-button');
+
+const renderProducts = (products) => {
+  let rowsHtml = '';
+  for (let index = 0; index < products.length; index += 2) {
+    const current = products[index];
+    const next = products[index + 1];
+    if (next !== undefined) {
+      const rowHtml = `
+                    <tr>
+                        <td>
+                            <h3>${current.title}</h3>                       
+                            <img src="${current.images[0]}" alt="" width="300px" height="300px">
+                            <div class="product-content">
+                                <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                                <p>Rating: ${current.rating}</p>
+                            </div>   
+                        </td>
+                        <td>
+                            <h3>${next.title}</h3>                       
+                            <img src="${next.images[0]}" alt="" width="300px" height="300px">
+                            <div class="product-content">
+                                <p>$${next.price} (${next.discountPercentage}% discount)</p>
+                                <p>Rating: ${next.rating}</p>
+                            </div>         
+                        </td>
+                    </tr>
+            `;
+      rowsHtml += rowHtml;
+    } else {
+      const rowHtml = `
+                    <tr>
+                        <td>
+                            <h3>${current.title}</h3>                       
+                            <img src="${current.images[0]}" alt="" width="300px" height="300px">
+                            <div class="product-content">
+                                <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                                <p>Rating: ${current.rating}</p>
+                            </div>   
+                        </td>
+                      </tr>`;
+      rowsHtml += rowHtml;
+    }
+  }
+  tableBody.innerHTML = rowsHtml;
+};
 
 const fetchProducts = async function () {
   const response = await fetch('https://dummyjson.com/products');
   let productsData = await response.json();
   productsData = productsData.products;
-  let rowsHtml = '';
-  for (let index = 0; index < productsData.length; index += 2) {
-    const current = productsData[index];
-    const next = productsData[index + 1];
-    const rowHtml = `
-                <tr>
-                    <td>
-                        <h3>${current.title}</h3>                       
-                        <img src="${current.images[0]}" alt="" width="300px" height="300px">
-                        <div class="product-content">
-                            <p>$${current.price} (${current.discountPercentage}% discount)</p>
-                            <p>Rating: ${current.rating}</p>
-                        </div>   
-                    </td>
-                    <td>
-                        <h3>${next.title}</h3>                       
-                        <img src="${next.images[0]}" alt="" width="300px" height="300px">
-                        <div class="product-content">
-                            <p>$${next.price} (${next.discountPercentage}% discount)</p>
-                            <p>Rating: ${next.rating}</p>
-                        </div>         
-                    </td>
-                </tr>
-        `;
-    rowsHtml += rowHtml;
-  }
-  tableBody.innerHTML = rowsHtml;
+  renderProducts(productsData);
 };
 
 const fetchCat = async function () {
@@ -61,51 +82,6 @@ const catFilter = async function () {
   const catInputs = document.querySelectorAll('input[type=checkbox]');
   let productsCats = [];
 
-  const renderProducts = () => {
-    let rowsHtml = '';
-    for (let index = 0; index < productsCats.length; index += 2) {
-      const current = productsCats[index];
-      const next = productsCats[index + 1];
-      if (next !== undefined) {
-        const rowHtml = `
-                      <tr>
-                          <td>
-                              <h3>${current.title}</h3>                       
-                              <img src="${current.images[0]}" alt="" width="300px" height="300px">
-                              <div class="product-content">
-                                  <p>$${current.price} (${current.discountPercentage}% discount)</p>
-                                  <p>Rating: ${current.rating}</p>
-                              </div>   
-                          </td>
-                          <td>
-                              <h3>${next.title}</h3>                       
-                              <img src="${next.images[0]}" alt="" width="300px" height="300px">
-                              <div class="product-content">
-                                  <p>$${next.price} (${next.discountPercentage}% discount)</p>
-                                  <p>Rating: ${next.rating}</p>
-                              </div>         
-                          </td>
-                      </tr>
-              `;
-        rowsHtml += rowHtml;
-      } else {
-        const rowHtml = `
-                      <tr>
-                          <td>
-                              <h3>${current.title}</h3>                       
-                              <img src="${current.images[0]}" alt="" width="300px" height="300px">
-                              <div class="product-content">
-                                  <p>$${current.price} (${current.discountPercentage}% discount)</p>
-                                  <p>Rating: ${current.rating}</p>
-                              </div>   
-                          </td>
-                        </tr>`;
-        rowsHtml += rowHtml;
-      }
-    }
-    tableBody.innerHTML = rowsHtml;
-  };
-
   catInputs.forEach(input => {
     input.addEventListener('change', async function (e) {
       const catName = input.name;
@@ -123,7 +99,7 @@ const catFilter = async function () {
       if (productsCats.length === 0) {
         fetchProducts();
       }
-      renderProducts();
+      renderProducts(productsCats);
     });
   });
 };
@@ -135,53 +111,17 @@ const searchFun = function () {
     const resp = await fetch(`https://dummyjson.com/products/search?q=${search.value}`);
     const data = await resp.json();
     const products = data.products;
-    const renderProducts = () => {
-      let rowsHtml = '';
-      for (let index = 0; index < products.length; index += 2) {
-        const current = products[index];
-        const next = products[index + 1];
-        if (next !== undefined) {
-          const rowHtml = `
-                        <tr>
-                            <td>
-                                <h3>${current.title}</h3>                       
-                                <img src="${current.images[0]}" alt="" width="300px" height="300px">
-                                <div class="product-content">
-                                    <p>$${current.price} (${current.discountPercentage}% discount)</p>
-                                    <p>Rating: ${current.rating}</p>
-                                </div>   
-                            </td>
-                            <td>
-                                <h3>${next.title}</h3>                       
-                                <img src="${next.images[0]}" alt="" width="300px" height="300px">
-                                <div class="product-content">
-                                    <p>$${next.price} (${next.discountPercentage}% discount)</p>
-                                    <p>Rating: ${next.rating}</p>
-                                </div>         
-                            </td>
-                        </tr>
-                `;
-          rowsHtml += rowHtml;
-        } else {
-          const rowHtml = `
-                        <tr>
-                            <td>
-                                <h3>${current.title}</h3>                       
-                                <img src="${current.images[0]}" alt="" width="300px" height="300px">
-                                <div class="product-content">
-                                    <p>$${current.price} (${current.discountPercentage}% discount)</p>
-                                    <p>Rating: ${current.rating}</p>
-                                </div>   
-                            </td>
-                          </tr>`;
-          rowsHtml += rowHtml;
-        }
-      }
-      tableBody.innerHTML = rowsHtml;
-    };
-    renderProducts();
+    renderProducts(products);
   });
 };
+
+logoImage.addEventListener('click', function () {
+  window.location.href = 'home.html';
+});
+
+signin.addEventListener('click', function () {
+  window.location.href = '../../Login-page/signin.html';
+});
 
 fetchProducts();
 fetchCat();

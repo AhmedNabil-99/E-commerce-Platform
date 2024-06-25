@@ -15,6 +15,11 @@ nav {
     margin-left: 20px;
 }
 
+#logo-image:hover {
+    cursor: pointer;
+    border: 2px white solid;
+}
+
 #search-button {
     width: 40px;
     height: 30px;
@@ -37,7 +42,7 @@ nav {
 }
 
 #signin-button:hover {
-    border: 1px white solid;
+    border: 2px white solid;
 }
 #cart-img {
     width: 40px;
@@ -60,6 +65,15 @@ nav {
     width: 500px;
     height: 30px;
     border-color: white;
+}
+
+#search-button {
+    padding: 2px;
+}
+
+#search-button:hover {
+    border: 2px white solid;
+    cursor: pointer;
 }
 
 table {
