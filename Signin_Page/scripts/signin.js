@@ -133,10 +133,13 @@ form.addEventListener("submit", function (e) {
         })
         .then(res => res.json())
         .then(data => {
+            console.log(data.id);
             if (data.token) {
                 textErr.style.display = "none";
                 passwordErr.style.display = "none";
+                localStorage.setItem('user_id', data.id);
                 alert("Login Successful");
+                window.location.href = '../home-page/home.html'; 
             } else {
                 passwordErr.style.display = "block";
                 passwordErr.textContent = "Invalid username or password";
