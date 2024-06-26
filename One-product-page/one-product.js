@@ -1,4 +1,6 @@
-fetch('http://dummyjson.com/products/15')
+let currentProduct = localStorage.getItem("targetProduct")
+
+fetch(`http://dummyjson.com/products/${currentProduct}`)
 .then(res => res.json())
 .then(data => {
     console.log(data);

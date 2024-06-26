@@ -13,7 +13,7 @@ const renderProducts = (products) => {
                     <tr>
                         <td>
                             <h3>${current.title}</h3>                       
-                            <img src="${current.images[0]}" alt="" width="300px" height="300px">
+                            <img src="${current.images[0]}" alt="" width="300px" height="300px" name="${current.id}" class="productImages">
                             <div class="product-content">
                                 <p>$${current.price} (${current.discountPercentage}% discount)</p>
                                 <p>Rating: ${current.rating}</p>
@@ -21,7 +21,7 @@ const renderProducts = (products) => {
                         </td>
                         <td>
                             <h3>${next.title}</h3>                       
-                            <img src="${next.images[0]}" alt="" width="300px" height="300px">
+                            <img src="${next.images[0]}" alt="" width="300px" height="300px" name="${next.id}" class="productImages">
                             <div class="product-content">
                                 <p>$${next.price} (${next.discountPercentage}% discount)</p>
                                 <p>Rating: ${next.rating}</p>
@@ -123,7 +123,19 @@ signin.addEventListener('click', function () {
   window.location.href = '../../Login-page/signin.html';
 });
 
+const getProduct = function () {
+  tableBody.addEventListener('click', function(e) {
+    if (e.target.classList[0]) {
+      localStorage.setItem("targetProduct", `${e.target.name}`)
+      window.open('../One-product-page/one-product.html', '_blank');
+    }
+  })
+}
+
 fetchProducts();
 fetchCat();
 catFilter();
 searchFun();
+
+getProduct()
+
