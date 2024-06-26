@@ -120,7 +120,7 @@ logoImage.addEventListener('click', function () {
 });
 
 signin.addEventListener('click', function () {
-  window.location.href = '../../Login-page/signin.html';
+  window.location.href = '../Signin_Page/signin.html';
 });
 
 const getProduct = function () {
