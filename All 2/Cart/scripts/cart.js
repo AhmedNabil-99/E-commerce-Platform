@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productImage = localStorage.getItem('productImage');
     const productName = localStorage.getItem('productName');
     const productPrice = localStorage.getItem('productPrice');
-    const idnumber = localStorage.getItem('id');
+    const idnumber = localStorage.getItem('user_id');
 
     // Fetch cart data from the API
     fetch(`https://dummyjson.com/carts/${idnumber}`)

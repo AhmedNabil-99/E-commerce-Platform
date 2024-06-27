@@ -2,6 +2,8 @@ const tableBody = document.getElementsByTagName('tbody')[0];
 const sideBar = document.getElementById('sidebar');
 const logoImage = document.getElementById('logo-image');
 const signin = document.getElementById('signin-button');
+const logedUserId = localStorage.getItem("user_id");
+const loginBtn = document.getElementById("signin-button")
 
 const renderProducts = (products) => {
   let rowsHtml = '';
@@ -133,18 +135,27 @@ signin.addEventListener('click', function () {
 });
 
 const getProduct = function () {
-  tableBody.addEventListener('click', function(e) {
+  tableBody.addEventListener('click', function (e) {
     if (e.target.classList[0]) {
-      localStorage.setItem("targetProduct", `${e.target.name}`)
-      window.open('../One_Product_Page/one-product.html', '_blank');
+      localStorage.setItem('targetProduct', `${e.target.name}`);
+      window.open('../One-product-page/one-product.html', '_blank');
     }
-  })
+  });
+};
+
+const hiUser = async function() {
+  if (logedUserId) {
+  resp = await fetch(`https://dummyjson.com/users/${logedUserId}`)
+  data = await resp.json()
+  let fName = data.firstName
+  loginBtn.textContent = `hi, ${fName}`
+  }
+
 }
 
 fetchProducts();
 fetchCat();
 catFilter();
 searchFun();
-
-getProduct()
-
+getProduct();
+hiUser()
