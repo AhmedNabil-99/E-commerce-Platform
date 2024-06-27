@@ -4,65 +4,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* #logo-image {
-    width: 118px;
-    height: 60px;
-    margin-left: 20px;
-}
 
-#logo-image:hover {
-    cursor: pointer;
-    border: 2px white solid;
-}
-
-#search-button {
-    width: 40px;
-    height: 30px;
-    position: absolute;
-    bottom: 3px;
-    margin-left: 10px;
-}
-
-
-#signin-button {
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    right: 130px;
-    top: 15px;
-    font-size: 20px;
-    font-size: 700;
-    padding: 5px 7px 5px 7px;
-    
-} */
-
-/* #signin-button:hover {
-    border: 2px white solid;
-}
-#cart-img {
-    width: 40px;
-    height: 30px;
-    margin-top: 10px;
-    position: absolute;
-    top: 7px;
-    right: 70px;
-}
-
-
-#search {
-    width: 500px;
-    height: 30px;
-    border-color: white;
-}
-
-#search-button {
-    padding: 2px;
-} */
-
-/* #search-button:hover {
-    border: 2px white solid;
-    cursor: pointer;
-} */
 
 table {
     width: 75%;
@@ -101,3 +43,103 @@ td h3 {
     padding: 10px;
 }
 
+
+
+
+
+
+
+/* footer */
+
+#media a{
+    padding: 0 2px;
+    margin: 0 5px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+#face:hover {
+    color: #3b5998;
+}
+#ins:hover {
+    background-color: #ff894a;
+    border-radius: 5px;
+    color: white;
+}
+#twi:hover {
+    color: #00aff0;
+}
+#you:hover {
+    color: #bb0000;
+}
+footer{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    background-color: #7b9c68;
+    padding: 0 50px;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    margin-top: 20px;
+}
+.fot {
+    width: 350px;
+    height: 100px;
+}
+#about a {
+    text-decoration: none;
+    margin: 15px 0;
+    color: black;
+}
+#about a:hover {
+    opacity: 0.7;
+}
+#media a{
+    padding: 0 2px;
+    margin: 0 5px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+#face:hover {
+    color: #3b5998;
+}
+#ins:hover {
+    background-color: #ff894a;
+    border-radius: 5px;
+    color: white;
+}
+#twi:hover {
+    color: #00aff0;
+}
+#you:hover {
+    color: #bb0000;
+}
+footer{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    background-color: #7b9c68;
+    padding: 0 50px;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    margin-top: 20px;
+}
+.fot {
+    width: 350px;
+    height: 100px;
+}
+#about a {
+    text-decoration: none;
+    margin: 15px 0;
+    color: black;
+}
+#about a:hover {
+    opacity: 0.7;
+}

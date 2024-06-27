@@ -41,7 +41,31 @@ const renderProducts = (products) => {
                     </tr>
             `;
       rowsHtml += rowHtml;
-    } else {
+    }
+    else if (second !== undefined) {
+      const rowHtml = `
+                    <tr>
+                        <td>
+                            <h3>${current.title}</h3>                       
+                            <img src="${current.images[0]}" alt="" width="300px" height="300px" name="${current.id}" class="productImages">
+                            <div class="product-content">
+                                <p>$${current.price} (${current.discountPercentage}% discount)</p>
+                                <p>Rating: ${current.rating}</p>
+                            </div>   
+                        </td>
+                        <td>
+                            <h3>${second.title}</h3>                       
+                            <img src="${second.images[0]}" alt="" width="300px" height="300px" name="${second.id}" class="productImages">
+                            <div class="product-content">
+                                <p>$${second.price} (${second.discountPercentage}% discount)</p>
+                                <p>Rating: ${second.rating}</p>
+                            </div>         
+                        </td>
+                    </tr>
+            `;
+      rowsHtml += rowHtml;
+    }
+    else {
       const rowHtml = `
                     <tr>
                         <td>
@@ -151,14 +175,14 @@ const getProduct = function () {
 const hiUser = async function() {
   const userElement = document.getElementById("user-name")
   if (logedUserId) {
-  resp = await fetch(`https://dummyjson.com/users/${logedUserId}`)
-  data = await resp.json()
+  let resp = await fetch(`https://dummyjson.com/users/${logedUserId}`)
+  let data = await resp.json()
   let fName = data.firstName
   loginBtn.textContent = `Sign Out`
   userElement.textContent = `hi, ${fName}`
   }
-
 }
+
 
 fetchProducts();
 fetchCat();
