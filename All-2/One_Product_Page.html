@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/About Page.css">
-    <title>About Page</title>
+    <link rel="stylesheet" href="styles/One_Product_Page.css">
+    <title>Cart Page</title>
 </head>
 <body>
     <section id= "header">
-        <a href="home.html"><img src="images/logo.png" alt="logo" class="logo"></a>
+        <a href="home page.html"><img src="images/logo.png" alt="logo" class="logo"></a>
         
         <div id="search-bar">
             <input type="text" placeholder="Search..." name="search-bar">
-            <a href="home.html"><img src="images/magnifying-glass-solid.svg"></a>
+            <a href="home page.html"><img src="images/magnifying-glass-solid.svg"></a>
         </div>
 
         <div>
@@ -21,19 +22,21 @@
                 <li><a href="home.html" class="active-home">Home</a></li>
                 <li><a href="About Page.html" class="active-about">About</a></li>
                 <li><a href="#contact" class="active-contact">Contact</a></li>
-                <li><a href="signin.html" id="signin-button">Sign In</a></li>
+                <li><a href="#">Sign In</a></li>
                 <li><a href="cart.html"><img src="images/cart-shopping-solid.svg" class="cart-icon"></a></li>
             </ul>
         </div>
     </section>
-    <section id="about-head">
-        <img src="images/FeatureImage_Online_Shopping_Statistics.jpg">
+    <section id="one-item">
+        <img id="product-details1">
         <div id="description">
-            <h1>Who we are?</h1><br><br><br>
-            <p><strong>Welcome to SHOPIFY -</strong> Your Ultimate Online Shopping Destination!</p>
-            <p>At SHOPIFY, we believe in making your shopping experience as seamless and enjoyable as possible. Our mission is to provide you with a diverse selection of high-quality products, all available at your fingertips. Whether you're looking for the latest fashion trends, cutting-edge electronics, home essentials, or unique gifts, we've got you covered.</p>
+            <span id="product-details2"></span>
+            <button class="add-to-cart">Add To Cart</button>
         </div>
     </section>
+    <div id="comments">
+        <h2>Comments</h2>
+    </div>
     <footer class="footer">
         <div class="col">
             <img src="images/logo.png" class="logo-footer"><br>
@@ -62,9 +65,8 @@
             <a href="#"><img src="images/ee0e6fd4d6ad3283ce1b38e28481a51cb25a9dac.png" class="fot"></a>
             <p>Secured Payment Geteways</p>
             <a href="#"><img src="images/Logos-01.png" class="fot"></a>
-            
         </div>
     </footer>
-    <script src="scripts/About Page.js"></script>
+    <script src="scripts/One_Product_Page.js"></script>
 </body>
 </html>

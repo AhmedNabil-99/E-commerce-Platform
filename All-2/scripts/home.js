@@ -167,7 +167,7 @@ const getProduct = function () {
   tableBody.addEventListener('click', function (e) {
     if (e.target.classList[0]) {
       localStorage.setItem('targetProduct', `${e.target.name}`);
-      window.open('one-product.html', '_blank');
+      window.open('One_Product_Page.html', '_blank');
     }
   });
 };
