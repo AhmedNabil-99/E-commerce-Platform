@@ -143,17 +143,19 @@ const getProduct = function () {
   tableBody.addEventListener('click', function (e) {
     if (e.target.classList[0]) {
       localStorage.setItem('targetProduct', `${e.target.name}`);
-      window.open('../One-product-page/one-product.html', '_blank');
+      window.open('../One_Product_Page/one-product.html', '_blank');
     }
   });
 };
 
 const hiUser = async function() {
+  const userElement = document.getElementById("user-name")
   if (logedUserId) {
   resp = await fetch(`https://dummyjson.com/users/${logedUserId}`)
   data = await resp.json()
   let fName = data.firstName
-  loginBtn.textContent = `hi, ${fName}`
+  loginBtn.textContent = `Sign Out`
+  userElement.textContent = `hi, ${fName}`
   }
 
 }
