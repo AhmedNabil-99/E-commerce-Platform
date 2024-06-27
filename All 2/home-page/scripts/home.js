@@ -2,15 +2,14 @@ const tableBody = document.getElementsByTagName('tbody')[0];
 const sideBar = document.getElementById('sidebar');
 const logoImage = document.getElementById('logo-image');
 const signin = document.getElementById('signin-button');
-const logedUserId = localStorage.getItem("user_id");
-const loginBtn = document.getElementById("signin-button")
 
 const renderProducts = (products) => {
   let rowsHtml = '';
-  for (let index = 0; index < products.length; index += 2) {
+  for (let index = 0; index < products.length; index += 3) {
     const current = products[index];
     const next = products[index + 1];
-    if (next !== undefined) {
+    const next1 = products[index + 2];
+    if (next1 !== undefined) {
       const rowHtml = `
                     <tr>
                         <td>
@@ -27,6 +26,14 @@ const renderProducts = (products) => {
                             <div class="product-content">
                                 <p>$${next.price} (${next.discountPercentage}% discount)</p>
                                 <p>Rating: ${next.rating}</p>
+                            </div>         
+                        </td>
+                        <td>
+                            <h3>${next1.title}</h3>                       
+                            <img src="${next1.images[0]}" alt="" width="300px" height="300px" name="${next1.id}" class="productImages">
+                            <div class="product-content">
+                                <p>$${next1.price} (${next1.discountPercentage}% discount)</p>
+                                <p>Rating: ${next1.rating}</p>
                             </div>         
                         </td>
                     </tr>
@@ -118,7 +125,7 @@ const searchFun = function () {
 };
 
 logoImage.addEventListener('click', function () {
-  window.location.href = 'home.html';
+  window.location.href = '../home-page/home.html';
 });
 
 signin.addEventListener('click', function () {
@@ -126,27 +133,18 @@ signin.addEventListener('click', function () {
 });
 
 const getProduct = function () {
-  tableBody.addEventListener('click', function (e) {
+  tableBody.addEventListener('click', function(e) {
     if (e.target.classList[0]) {
-      localStorage.setItem('targetProduct', `${e.target.name}`);
-      window.open('../One-product-page/one-product.html', '_blank');
+      localStorage.setItem("targetProduct", `${e.target.name}`)
+      window.open('../One_Product_Page/one-product.html', '_blank');
     }
-  });
-};
-
-const hiUser = async function() {
-  if (logedUserId) {
-  resp = await fetch(`https://dummyjson.com/users/${logedUserId}`)
-  data = await resp.json()
-  let fName = data.firstName
-  loginBtn.textContent = `hi, ${fName}`
-  }
-
+  })
 }
 
 fetchProducts();
 fetchCat();
 catFilter();
 searchFun();
-getProduct();
-hiUser()
+
+getProduct()
+
