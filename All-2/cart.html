@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="styles/cart.css">
+    <link rel="stylesheet" href="styles/nav.css">
+</head>
+<body>
+    <nav id= "header">
+        <a href="home.html"><img src="images/logo.png" alt="" class="logo" id="logo-image"></a>
+        
+        <div id="search-bar">
+            <input type="text" placeholder="Search..." name="search-bar">
+            <a href="home.html" id="search-button"><img src="images/magnifying-glass-solid.svg"></a>
+        </div>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="home.html" class="active-home">Home</a></li>
+                <li><a href="About Page.html" class="active-about">About</a></li>
+                <li><a href="Contact page.html" class="active-contact">Contact</a></li>
+                <li><a href="signin.html" id="signin-button">Sign In</a></li>
+                <li><a href="cart.html"><img src="images/cart-shopping-solid.svg" class="cart-icon"></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="cart-container">
+
+        <h1 id="shopping-cart">Shopping Cart</h1>
+
+        <div class="cart-header">
+            <span>Product</span>
+            <span>Quantity</span>
+            <span>Price</span>
+            <span>Total Price</span>
+            <span>Remove</span>
+        </div>
+
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="cart-totalPrice"></span>
+        </div> 
+    
+        <button  class="cart-container" id="checkout-btn" >Proceed To Checkout</button>
+                
+        
+
+    </div>
+    
+    
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
+
+
+
+

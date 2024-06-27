@@ -1,5 +1,7 @@
+const logedUser = localStorage.getItem("user_id")
+
 document.addEventListener('DOMContentLoaded', () => {
-    fetch("https://dummyjson.com/users/4")
+    fetch(`https://dummyjson.com/users/${logedUser}`)
     .then(res => res.json())
     .then(data => {
         document.getElementById('firstName').textContent = data.firstName;

@@ -156,18 +156,18 @@ const searchFun = function () {
 };
 
 logoImage.addEventListener('click', function () {
-  window.location.href = '../home-page/home.html';
+  window.location.href = 'home.html';
 });
 
 signin.addEventListener('click', function () {
-  window.location.href = '../Signin_Page/signin.html';
+  window.location.href = 'signin.html';
 });
 
 const getProduct = function () {
   tableBody.addEventListener('click', function (e) {
     if (e.target.classList[0]) {
       localStorage.setItem('targetProduct', `${e.target.name}`);
-      window.open('../One_Product_Page/one-product.html', '_blank');
+      window.open('one-product.html', '_blank');
     }
   });
 };
