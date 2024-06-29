@@ -193,7 +193,9 @@ const hiUser = async function() {
   }
 }
 
-if (localStorage.getItem('searchText') === '')
+
+
+if (localStorage.getItem('searchText') === '' || !(localStorage.getItem('searchText')))
   {
     fetchProducts();
   }
