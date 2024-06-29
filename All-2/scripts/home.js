@@ -147,8 +147,8 @@ const catFilter = async function () {
   if (searchText) {
     const resp = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
     const data = await resp.json();
-    const products = data.products;
-    renderProducts(products);
+    const products = await data.products;
+    await renderProducts(products);
     localStorage.setItem('searchText', '')
   }
 
@@ -159,7 +159,7 @@ const catFilter = async function () {
     renderProducts(products);
   });
   search.addEventListener("blur", function() {
-    if (search.value === "") {
+    if (search.value === "" && searchText === '') {
       fetchProducts();
     }
   })
