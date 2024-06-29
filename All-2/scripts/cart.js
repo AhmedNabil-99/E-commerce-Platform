@@ -180,6 +180,21 @@ const hiUser = async function() {
     userElement.textContent = `hi, ${fName}`
     }
   }
+
+
+
+const search = function() {
+  const search = document.querySelector('input[type=text]');
+  const searchBotton = document.getElementById('search-button');
+  searchBotton.addEventListener('click', (e) => {
+    if (search) {
+      localStorage.setItem('searchText', search.value)
+      window.location.href = 'home.html'
+    }
+
+  })
+}
   
   
 hiUser()
+search()

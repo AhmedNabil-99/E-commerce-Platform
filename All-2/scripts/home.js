@@ -139,9 +139,19 @@ const catFilter = async function () {
   });
 };
 
- const searchFun = function () {
+ const searchFun = async function () {
   const search = document.querySelector('input[type=text]');
   const searchBotton = document.getElementById('search-button');
+  const searchText = localStorage.getItem('searchText')
+
+  if (searchText) {
+    const resp = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
+    const data = await resp.json();
+    const products = data.products;
+    renderProducts(products);
+    localStorage.setItem('searchText', '')
+  }
+
   searchBotton.addEventListener('click', async function (e) {
     const resp = await fetch(`https://dummyjson.com/products/search?q=${search.value}`);
     const data = await resp.json();
