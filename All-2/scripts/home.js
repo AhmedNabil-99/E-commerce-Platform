@@ -193,8 +193,10 @@ const hiUser = async function() {
   }
 }
 
-
-fetchProducts();
+if (localStorage.getItem('searchText') === '')
+  {
+    fetchProducts();
+  }
 fetchCat();
 catFilter();
 searchFun();

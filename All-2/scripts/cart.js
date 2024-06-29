@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const productPrice = localStorage.getItem('productPrice');
     const idnumber = localStorage.getItem('user_id');
 
-    // Fetch cart data from the API
     fetch(`https://dummyjson.com/carts/${idnumber}`)
         .then(res => res.json())
         .then(data => {
@@ -80,15 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // Add event listeners to each cart item
             document.querySelectorAll(".cart-item").forEach(item => addEventListeners(item));
 
-            // Initial calculation
             updateTotalPrice();
         })
         .catch(error => console.error('Error:', error));
 
-    // Display data from localStorage if available
     if (productImage && productName && productPrice) {
         const cartItemsContainer = document.querySelector('.cart-container');
         const cartItem = document.createElement('div');
@@ -159,10 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Add event listeners to the cart item from localStorage
         addEventListeners(cartItem);
 
-        // Initial calculation
         updateTotalPrice();
     }
 });

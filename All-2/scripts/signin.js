@@ -1,19 +1,15 @@
 
-// _________________________Inputs___________________________________
 var textInput = document.querySelector('input[type="text"]');
 var passInput = document.querySelector('input[type="password"]');
 
-// _________________________Errors___________________________________
 var textErr = document.querySelector("#username-err");
 var passwordErr = document.querySelector("#password-err");
 
-// _________________________Patterns___________________________________
 var txtPattern = /^[a-zA-Z]/;
 var passPattern = /^[a-zA-Z]/;
 
 var form = document.querySelector("form");
 
-// Validate input function
 function validateInput(input, pattern, errorElement) {
     if (!input.value.match(pattern)) {
         errorElement.style.display = "block";
@@ -34,9 +30,8 @@ passInput.addEventListener("blur", function () {
     validateInput(passInput, passPattern, passwordErr);
 });
 
-// Form submit event listener
 form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); 
 
     var valid = true;
 
@@ -61,7 +56,6 @@ form.addEventListener("submit", function (e) {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.id);
             if (data.token) {
                 textErr.style.display = "none";
                 passwordErr.style.display = "none";
