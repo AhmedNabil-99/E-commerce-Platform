@@ -139,7 +139,7 @@ const catFilter = async function () {
   });
 };
 
-const searchFun = function () {
+ const searchFun = function () {
   const search = document.querySelector('input[type=text]');
   const searchBotton = document.getElementById('search-button');
   searchBotton.addEventListener('click', async function (e) {
